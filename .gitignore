@@ -15,7 +15,14 @@ public class masterClass{ //The main class to connect all the classes. Produce t
          mushroom = ImageIO.read(new File("Mushroom.png"));
       } catch (IOException e) {
       }
-      g.drawImage(mushroom, 10, 10, null);
+      Random rand = new Random();
+      int  r = rand.nextInt(765) + 1;
+      int  c = rand.nextInt(720) + 1;
+      for(int i = 0; i <= 80; i++){
+         g.drawImage(mushroom, r, c, null);
+         r = rand.nextInt(700) + 1;
+         c = rand.nextInt(520) + 1;
+//The image of the mushroom is way too big, jonathon should find a smaller one.
    }
    
    public static void mushroom(Graphics G){
