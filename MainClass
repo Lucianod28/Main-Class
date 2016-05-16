@@ -5,13 +5,13 @@ import java.awt.image.*;
 import javax.imageio.ImageIO;
 
 public class masterClass{ //The main class to connect all the classes. Produce the background and command bottom.
-   public static final int Width = 624;
-   public static final int Height = 663;
+   public static final int WIDTH = 624;
+   public static final int HEIGHT = 663;
    public static void main(String[] args){
       Scanner console = new Scanner(System.in);
       System.out.print("Player: ");
       String player = console.next();
-      DrawingPanel panel = new DrawingPanel(Width, Height); //Same proportions as Centipede game
+      DrawingPanel panel = new DrawingPanel(WIDTH, HEIGHT); //Same proportions as Centipede game
       panel.setBackground(Color.BLACK);
       Graphics g = panel.getGraphics();
       g.setColor(Color.blue);
@@ -21,6 +21,7 @@ public class masterClass{ //The main class to connect all the classes. Produce t
       
       String Score = "SCORE :";
       g.drawString(Score, 340, 15);
+      centipede(10, g);
       //Put in the scoring method after creat
    }
    
@@ -33,13 +34,21 @@ public class masterClass{ //The main class to connect all the classes. Produce t
       }
       Random rand = new Random();
       for(int i = 0; i <= 90; i++){
-         int x = rand.nextInt(Width / 20) * 20;
-         int y = rand.nextInt(Height / 20) * 20;
-         if (y > 18 && y < 550){
+         int x = rand.nextInt(WIDTH / 20) * 20;
+         int y = rand.nextInt(HEIGHT / 20) * 20;
+         if (y > 48 && y < 550){
             g.drawImage(mushroomPic, x, y, null);
             mushroom.add(x); //Saves x and y coordinates to ArrrayList, all even indexes will be x,
             mushroom.add(y); //all odd indexes will be y coordinates
          }
       }
+   }
+   
+   public static void centipede(int length, Graphics g){
+      g.setColor(Color.green);
+      for (int i = 0; i <= length; i++){
+         g.fillOval(WIDTH / 2 - 18 * i, 20, 18, 13);
+      }
+      //How do I move the segments?
    }
 }
